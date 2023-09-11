@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nishant Mishra - Personal Website</title>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="./dist/output.css" rel="stylesheet"/>
+  <style>
+   /* Light mode styles */
+    body.light-mode {
+      --bg-gradient-color-start: #8aeaea;
+      --bg-gradient-color-end: white;
+      --text-color: #000;
+      --nav-bg-color: #ECFDFF;
+      --nav-text-color: #047A88;
+      --container-bg: #fff;
+      --bullet-text-color: #000;
+      --link-color: #047A88;
+      --switch-bg-color: #ccc;
+      --switch-slider-color: #fff;
+      --switch-slider-color-checked: #c9d1d9;
+      --switch-slider-bg-checked: #047A88;
+      background-image: linear-gradient(to bottom right, var(--bg-gradient-color-start), var(--bg-gradient-color-end));
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      padding-bottom: 40px;
+
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      --bg-gradient-color-start: #010409;
+      --bg-gradient-color-end: #010409;
+      --text-color: #c9d1d9;
+      --nav-bg-color: #0d1117;
+      --nav-text-color: #c9d1d9;
+      --container-bg: #0d1117;
+      --bullet-text-color: #000;
+      --link-color: #047A88;
+      --switch-bg-color: #ccc;
+      --switch-slider-color: #fff;
+      --switch-slider-color-checked: #c9d1d9;
+      --switch-slider-bg-checked: #047A88;
+      background-image: linear-gradient(to bottom right, var(--bg-gradient-color-start), var(--bg-gradient-color-end));
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      padding-bottom: 40px;
+
+    }
+
+    body {
+      color: var(--text-color);
+      transition: background-color 0.5s, color 0.5s;
+    }
+    .wide-container {
+      max-width: 1200px; /* Adjust this value as needed */
+      margin: 0 auto; /* Center the container horizontally */
+    }
+    .navbar {
+      background-color: var(--nav-bg-color);
+      transition: background-color 0.5s;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: var(--nav-text-color);
+    }
+
+    .switch-slider:before {
+      background-color: var(--text-color);
+    }
+
+    .bg-slate-50 {
+      background: var(--container-bg);
+    }
+
+    .dark-mode .navbar {
+      background-color: var(--nav-bg-color);
+    }
+
+    .dark-mode .navbar-dark .navbar-nav .nav-link {
+      color: var(--nav-text-color);
+    }
+
+    .dark-mode .switch-slider:before {
+      background-color: var(--text-color);
+    }
+
+    .dark-mode .bg-slate-50 {
+      background-color: var(--container-bg);
+    }
+
+    .dark-mode .marker:text-cyan {
+      color: var(--bullet-text-color);
+    }
+
+    .dark-mode .text-cyan {
+      color: var(--link-color) !important;
+    }
+    
+    a.text-cyan {
+      color: var(--link-color) !important;
+    }
+    
+    .projects-title {
+      color: #047A88;
+      /* Add any other styles you want for the title */
+    }    
+
+    /* Add styles for the sun/moon emoji */
+    .sun-moon-emoji {
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    // Function to set the dark mode preference in localStorage
+    function setDarkModePreference(isDarkMode) {
+      localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+    }
+
+    // JavaScript function to toggle light and dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      const isDarkMode = body.classList.contains("dark-mode");
+
+      // Toggle the dark mode class on the body element
+      if (isDarkMode) {
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+      } else {
+        body.classList.remove("light-mode");
+        body.classList.add("dark-mode");
+      }
+
+      // Save the dark mode preference to localStorage
+      setDarkModePreference(!isDarkMode);
+
+      // Toggle the sun/moon emoji
+      const sunMoonEmoji = document.getElementById("sunMoonEmoji");
+      sunMoonEmoji.innerText = isDarkMode ? "☀️" : "🌙";
+    }
+
+    // Function to check the user's dark mode preference on page load
+    function checkDarkModePreference() {
+      const isDarkMode = localStorage.getItem('darkMode') === 'true';
+      const body = document.body;
+      if (isDarkMode) {
+        body.classList.add("dark-mode");
+        document.getElementById("sunMoonEmoji").innerText = "🌙";
+      } else {
+        body.classList.add("light-mode");
+        document.getElementById("sunMoonEmoji").innerText = "☀️";
+      }
+    }
+  </script>
+ </head>
+ <body class="light-mode" onload="checkDarkModePreference()">
+  <nav class="navbar navbar-expand-lg navbar-light">
+   <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+     <span class="projects-title text-cyan">Nishant Mishra</span>
+    </a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+     <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="navbar-nav">
+      <li class="nav-item">
+       <a class="nav-link text-cyan" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link text-cyan" href="courses.html">Courses</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link active text-cyan" href="personal.html">Personal</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link text-cyan" href="research.html">Research</a>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link sun-moon-emoji" id="sunMoonEmoji" onclick="toggleDarkMode()">☀️</span>
+      </li>
+     </ul>
+    </div>
+
+   </div>
+  </nav>
+  <br>
+  <div class="bg-slate-50 rounded-xl justify-center p-7 mt-12 mb-12 mx-12 md:mx-auto lg:mx-auto wide-container shadow-2xl">
+    <h1 align="center" class="mb-2 text-3xl font-extrabold leading-none tracking-tight text-cyan md:text-4xl lg:text-5xl projects-title">Personal Projects</h1>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div align="center" class="col" id='personal'>
+          <br><br><br>
+          <p class="font-medium text-xl lg:text-2xl mb-2">This Website! 🌐</p>
+          <p>This website originally started as one of my problem sets for CS50, "Homepage" that had students code a simple HTML page on a topic of their
+            choice. I used the opportunity to get started on making my own personal website, using <b>HTML/CSS</b>, <b>JavaScript</b>, and <b>Bootstrap</b>.
+            Since then, I've updated this site to help introduce myself, display some projects I've worked on over the years, as well as a dark mode.
+            If you'd like to use this website template for your own site, I'd appreciate if you could fork the repository, and give credit on your
+            README or on the website itself. I hope you enjoy your look around!<br>
+          <br>
+          <a class="btn btn-outline-info" href="https://github.com/nmishra459/nmishra459.github.io"><b>GitHub Repository</b></a></p>
+        </div>
+        <div class="col text-right"><img alt="Responsive image" class="img-fluid border border-dark" height="475" src="assets/Website_Screenshot.png" width="475"></div>
+      </div>
+    </div>
+    
+    <br><br><br>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col text-right"><br><img alt="Responsive image" class="img-fluid border border-dark" height="550" src="assets/FTTP.png" width="570"></div>
+          <div align="center" class="col right text-align left" id='personal'>
+            <p class="font-medium text-xl lg:text-2xl mb-2">Psyduck's Trading Bot 📈</p>
+            <p>In March 2021, I was one of 60 college freshmen selected to attend Jane Street's First-Year Trading & Technology Program (<a id="Biopticon" href="https://www.janestreet.com/join-jane-street/our-programs/fttp/"><b>FTTP</b></a>). Grouped
+            into teams of three, we competed in an Electronic Trading Challenge (ETC), which had us program a market trader bot (<b>Python</b>)
+            that uses TCP connections (<b>Bash</b>), a known fair value of bonds, and discrepancies in the pricing of securities to generate profit in a simulated financial exchange. Some last-minute modifications to our algorithm allowed our team (<i>Psyduck</i>) to jump to 8th place in the final round, despite having spent most of the competition in last due to initial bugs.<br>
+            <br>
+            <a class="btn btn-outline-info" href="https://github.com/nmishra459/Jane-Street-FTTP-ETC"><b>GitHub Repository</b></a></p>
+          </div>
+      </div>
+    </div>
+
+    <br><br><br>
+
+
+
+    <div class="container">
+      <div class="row">
+        <div align="center" class="col" id='personal'>
+          <br><br><br>
+          <p class="font-medium text-xl lg:text-2xl mb-2">Keep on Trucking 🚚</p>
+          <p>In March 2020, I teamed up with four of my high school friends to compete in the MathWorks Math Modeling Challenge. Together, we researched the U.S. electric
+            truck market, developed mathematical models (<b>Python</b>) to predict electric truck usage in the next two decades, and determined ideal economic/environmental
+            zones for U.S.-based charging station infrastructure. We compiled our results into a final paper, which placed in the top 19% of 760 submissions.<br>
+          <br>
+          <a class="btn btn-outline-info" href="assets/M3MathChallengeElectricTrucking2020.pdf"><b>Research Paper</b></a> <a class="btn btn-outline-info" href="https://github.com/nmishra459/PHS_M3_Math_Modeling"><b>GitHub Repository</b></a></p>
+        </div>
+        <div class="col"><img alt="Responsive image" class="img-fluid border border-dark" height="500" src="assets/Math_Modeling.PNG" width="500"></div>
+      </div>
+    </div>
+    <br>
+
+    <br><br><br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col text-right">
+          <img alt="Responsive image" class="img-fluid border border-dark" height="500" src="assets/NYT.png" width="500">
+        </div>
+        <div align="center" class="col right text-align left" id='personal'>
+          <p class="font-medium text-xl lg:text-2xl mb-2">Summer Thoughts ✍️</p>
+          <p>In my summers as a high schooler, I spent a lot of time competing in <i>The New York Times</i> Summer Reading Competition, which has students
+            submit short essays on their thoughts on online articles they find on the Times's website. My response to Chloe Valdary's "Why I Refuse to Avoid
+            White People," as well as the Charlottesville Unite the Right rally, was one of 11 entries selected to be published from almost 9000
+            submitted worldwide in 2017. Having my voice heard on such a large platform spurred me to keep writing on my own, until it eventually
+            became one of my favorite hobbies!</b><br>
+          <br>
+          <a class="btn btn-outline-info" href="https://www.nytimes.com/2017/09/05/learning/reflections-on-our-summer-reading-contest-and-our-final-week-of-winners.html"><b>Published Essay</b></a></p>
+        </div>
+      </div><br>
+  </div>
+  <br>
+</body>
+</html>

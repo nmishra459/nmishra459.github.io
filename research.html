@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nishant Mishra - Personal Website</title>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="./dist/output.css" rel="stylesheet"/>
+  <style>
+   /* Light mode styles */
+    body.light-mode {
+      --bg-gradient-color-start: #8aeaea;
+      --bg-gradient-color-end: white;
+      --text-color: #000;
+      --nav-bg-color: #ECFDFF;
+      --nav-text-color: #047A88;
+      --container-bg: #fff;
+      --bullet-text-color: #000;
+      --link-color: #047A88;
+      --switch-bg-color: #ccc;
+      --switch-slider-color: #fff;
+      --switch-slider-color-checked: #c9d1d9;
+      --switch-slider-bg-checked: #047A88;
+      background-image: linear-gradient(to bottom right, var(--bg-gradient-color-start), var(--bg-gradient-color-end));
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      padding-bottom: 40px;
+
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      --bg-gradient-color-start: #010409;
+      --bg-gradient-color-end: #010409;
+      --text-color: #c9d1d9;
+      --nav-bg-color: #0d1117;
+      --nav-text-color: #c9d1d9;
+      --container-bg: #0d1117;
+      --bullet-text-color: #000;
+      --link-color: #047A88;
+      --switch-bg-color: #ccc;
+      --switch-slider-color: #fff;
+      --switch-slider-color-checked: #c9d1d9;
+      --switch-slider-bg-checked: #047A88;
+      background-image: linear-gradient(to bottom right, var(--bg-gradient-color-start), var(--bg-gradient-color-end));
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      padding-bottom: 40px;
+
+    }
+
+    body {
+      color: var(--text-color);
+      transition: background-color 0.5s, color 0.5s;
+    }
+    .wide-container {
+      max-width: 1200px; /* Adjust this value as needed */
+      margin: 0 auto; /* Center the container horizontally */
+    }
+    .navbar {
+      background-color: var(--nav-bg-color);
+      transition: background-color 0.5s;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: var(--nav-text-color);
+    }
+
+    .switch-slider:before {
+      background-color: var(--text-color);
+    }
+
+    .bg-slate-50 {
+      background: var(--container-bg);
+    }
+
+    .dark-mode .navbar {
+      background-color: var(--nav-bg-color);
+    }
+
+    .dark-mode .navbar-dark .navbar-nav .nav-link {
+      color: var(--nav-text-color);
+    }
+
+    .dark-mode .switch-slider:before {
+      background-color: var(--text-color);
+    }
+
+    .dark-mode .bg-slate-50 {
+      background-color: var(--container-bg);
+    }
+
+    .dark-mode .marker:text-cyan {
+      color: var(--bullet-text-color);
+    }
+
+    .dark-mode .text-cyan {
+      color: var(--link-color) !important;
+    }
+    
+    a.text-cyan {
+      color: var(--link-color) !important;
+    }
+    
+    .projects-title {
+      color: #047A88;
+      /* Add any other styles you want for the title */
+    }    
+
+    /* Add styles for the sun/moon emoji */
+    .sun-moon-emoji {
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    // Function to set the dark mode preference in localStorage
+    function setDarkModePreference(isDarkMode) {
+      localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+    }
+
+    // JavaScript function to toggle light and dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      const isDarkMode = body.classList.contains("dark-mode");
+
+      // Toggle the dark mode class on the body element
+      if (isDarkMode) {
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+      } else {
+        body.classList.remove("light-mode");
+        body.classList.add("dark-mode");
+      }
+
+      // Save the dark mode preference to localStorage
+      setDarkModePreference(!isDarkMode);
+
+      // Toggle the sun/moon emoji
+      const sunMoonEmoji = document.getElementById("sunMoonEmoji");
+      sunMoonEmoji.innerText = isDarkMode ? "☀️" : "🌙";
+    }
+
+    // Function to check the user's dark mode preference on page load
+    function checkDarkModePreference() {
+      const isDarkMode = localStorage.getItem('darkMode') === 'true';
+      const body = document.body;
+      if (isDarkMode) {
+        body.classList.add("dark-mode");
+        document.getElementById("sunMoonEmoji").innerText = "🌙";
+      } else {
+        body.classList.add("light-mode");
+        document.getElementById("sunMoonEmoji").innerText = "☀️";
+      }
+    }
+  </script>
+ </head>
+ <body class="light-mode" onload="checkDarkModePreference()">
+  <nav class="navbar navbar-expand-lg navbar-light">
+   <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+     <span class="projects-title text-cyan">Nishant Mishra</span>
+    </a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+     <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="navbar-nav">
+      <li class="nav-item">
+       <a class="nav-link text-cyan" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link text-cyan" href="courses.html">Courses</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link active text-cyan" href="personal.html">Personal</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link text-cyan" href="research.html">Research</a>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link sun-moon-emoji" id="sunMoonEmoji" onclick="toggleDarkMode()">☀️</span>
+      </li>
+     </ul>
+    </div>
+
+   </div>
+  </nav>
+  <br>
+  <div class="bg-slate-50 rounded-xl justify-center p-7 mt-12 mb-12 mx-12 md:mx-auto lg:mx-auto wide-container shadow-2xl">
+    <h1 align="center" class="mb-2 text-3xl font-extrabold leading-none tracking-tight text-cyan md:text-4xl lg:text-5xl projects-title">Research Projects</h1>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div align="center" class="col" id='personal'>
+          <p class="font-medium text-xl lg:text-2xl mb-2">Machine Learning Algorithms for Parameterizing Black Hole Images</p>
+          <p>In 2019, the Event Horizon Telescope Collaboration (<a href="https://eventhorizontelescope.org/" id="IACS" type="link"><b>EHT</b></a>) captured the first direct images of a black hole, serving as a major milestone in astrophysical classification. As a machine learning research intern at the Harvard Institute for Applied Computational Science (<a href="https://iacs.seas.harvard.edu/" id="IACS" type="link"><b>StellarDNN Group, IACS</b></a>), I use this data to run sections of the analysis pipeline for a machine learning recognition pathway (<b>Python, PyTorch, Keras</b>), exploring ways to not only pull physical parameters from images like the ones from EHT, but also create higher-resolution simulated images of what these black holes images might look like had we had even more powerful telescopes.<br></p>
+        </div>
+        <br>
+        <div class="col text-right"><br><br><img alt="Responsive image" class="img-fluid border border-dark" src="assets/IACS.png"></div>
+      </div>
+    </div>
+
+    <br><br>
+
+
+    <div class="container">
+      <div class="row">
+        
+        <div class="col"><br><img alt="Responsive image" class="img-fluid border border-dark" src="assets/PuchallaLab.png"></div>
+        <div align="center" class="col right text-align left" id='personal'>
+          <p class="font-medium text-xl lg:text-2xl mb-2">Deep Learning Algorithms for Following Zebrafish Growth</p>
+          <p>Zebrafish are great test subjects for medical research! But they all look similar, and they grow quickly, which makes it difficult for researchers to accurately identify them for trials. Working as a machine learning research intern with my colleagues at Princeton University (<a href="https://sites.google.com/view/puchallalab/home?authuser=0" id="Princeton" type="link"><b>Puchalla Lab, Dept. of Physics</b></a>), I ran sections of the analysis pipeline for a deep learning recognition pathway (based off Google's Inception V3 model) that uses a temporal bootstrapping technique to identify individual zebrafish over several weeks (<b>Python, Tensorflow, Keras</b>). Our goal is to offer an alternative to more labor-intensive and invasive identification methods such as subdermal dye-injection and RFID tag implants. [publication in progress]<br></p>
+        </div>
+      </div>
+    </div>
+
+
+    <br><br><br>
+
+    <div class="container">
+      <div class="row">
+        <div align="center" class="col" id='personal'>
+          <br>
+          <p class="font-medium text-xl lg:text-2xl mb-2">Modeling the Statistical Mechanics of Self-Gravitating Systems</p>
+          <p>In 2020, I worked as a computational physics research intern at the Princeton Plasma Physics Laboratory (<a href="https://www.pppl.gov/" id="PPPL" type="link"><b>PPPL</b></a>). As a part of PPPL's <a href = "https://theory.pppl.gov/research/research.php?rid=3" id = "PPPL" type = "link"><b>Computational Plasma Physics Group</b></a> (Theory Department), I focused on mapping out the statistical mechanics of self-gravitating systems as well as comparing them to those of plasma-based systems. First, I developed an adaptive symplectic integrator <b>(C++, Python)</b> that can model the complex motion - including binary captures - of dozens of closely distributed particles in space with reasonable accuracy. I then utilized these algorithms to study and record the underlying energy patterns and discrepancies in these systems. At the end of Summer 2020, I presented my work at PPPL's Summer Internship Poster Session.<br>
+          <br>
+          <a class="btn btn-outline-info" href="assets/An Adaptive Symplectic Integrator for Modeling the Mechanics of Self-Gravitating Systems.pdf"><b>Research Poster</b></a> <a class="btn btn-outline-info" href="assets/PPPL Presentation.pdf"><b>Research Presentation</b></a></p>
+        </div>
+        <div class="col text-right"><br>
+
+          <video autoplay muted loop class="embed-responsive embed-responsive-1by1" height="440" width="540"><source class="video-mask" src="assets/animation_fast.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
+        </div>
+      </div>
+    </div>
+    
+    <br><br><br>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col text-right"><img alt="Responsive image" class="img-fluid border border-dark" src="assets/DepthMap.png" height="470" width="470"></div>
+        <div align="center" class="col right text-align left" id='personal'>
+          <br><br>
+          <p class="font-medium text-xl lg:text-2xl mb-2">Deep Learning Algorithms for Classifying Underwater Pollution</p>
+          <p>Since the late 1960s, underwater pollution has become an increasingly worse problem in the earth’s oceans. To help classify some of the different types of ocean pollution that one might encounter, I worked at Princeton University (<a href="https://sites.google.com/view/puchallalab/home?authuser=0" id="Princeton" type="link"><b>Puchalla Lab, Dept. of Physics</b></a>) to capture 3D texture maps of common trash such as cups, cans, and bottles to serve as data for a deep learning recognition pathway (<b>Python, Tensorflow, Keras</b>). After running these depth maps through the classification pipeline, I compared the results to the classification done if the pipeline was just given standard RGB images. We hope that continued studies in this field will lead to better regional optimization of oceanic clean-up efforts.<br></p>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <br><br><br>
+
+
+    <div class="container">
+      <div class="row">
+        <div align="center" class="col" id='personal'>
+          <br>
+          <p class="font-medium text-xl lg:text-2xl mb-2">A Microfluidic Flow System for Studying Single-Particle Kinetics</p>
+          <p>In the summer of 2019, I worked as a microfluidics r&d engineering intern through Princeton University's Laboratory Learning Program (<a href="https://research.princeton.edu/about-us/internships/laboratory-learning-program" id="LLP" type="link"><b>LLP</b></a>). As a part of <a href="https://sites.google.com/view/puchallalab/home?authuser=0" id="Princeton" type="link"><b>Puchalla Lab</b></a>, I set up a multi-channel syringe pump system that facilitates single-particle kinetics in PDMS microchannels. To enable users to set, change, and read flow rates/directions, I programmed a user interface with <b>LabVIEW</b>, a graphical programming environment. I also worked on a set of <b>MATLAB</b> scripts that simulate the distribution of fluorescence bursts under various testing conditions.<br>
+          <br>
+          <a class="btn btn-outline-info" href="assets/A Multi-Channel Microfluidic Flow System for Facilitating and Studying Single-Particle Kinetics.pdf"><b>Research Poster</b></a></p>
+        </div>
+        <div class="col text-right"><img alt="Responsive image" class="img-fluid border border-dark" src="assets/Microfluidics.png"></div>
+      </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nishant Mishra - Personal Website</title>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="./dist/output.css" rel="stylesheet"/>
+  <style>
+   /* Light mode styles */
+    body.light-mode {
+      --bg-gradient-color-start: #8aeaea;
+      --bg-gradient-color-end: white;
+      --text-color: #000;
+      --nav-bg-color: #ECFDFF;
+      --nav-text-color: #047A88;
+      --container-bg: #fff;
+      --bullet-text-color: #000;
+      --link-color: #047A88;
+      --switch-bg-color: #ccc;
+      --switch-slider-color: #fff;
+      --switch-slider-color-checked: #c9d1d9;
+      --switch-slider-bg-checked: #047A88;
+      background-image: linear-gradient(to bottom right, var(--bg-gradient-color-start), var(--bg-gradient-color-end));
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      padding-bottom: 40px;
+
+
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      --bg-gradient-color-start: #010409;
+      --bg-gradient-color-end: #010409;
+      --text-color: #c9d1d9;
+      --nav-bg-color: #0d1117;
+      --nav-text-color: #c9d1d9;
+      --container-bg: #0d1117;
+      --bullet-text-color: #000;
+      --link-color: #047A88;
+      --switch-bg-color: #ccc;
+      --switch-slider-color: #fff;
+      --switch-slider-color-checked: #c9d1d9;
+      --switch-slider-bg-checked: #047A88;
+      background-image: linear-gradient(to bottom right, var(--bg-gradient-color-start), var(--bg-gradient-color-end));
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      padding-bottom: 40px;
+
+    }
+
+    body {
+      color: var(--text-color);
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    .wide-container {
+      max-width: 1200px; /* Adjust this value as needed */
+      margin: 0 auto; /* Center the container horizontally */
+    }
+
+    .navbar {
+      background-color: var(--nav-bg-color);
+      transition: background-color 0.5s;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: var(--nav-text-color);
+    }
+
+    .switch-slider:before {
+      background-color: var(--text-color);
+    }
+
+    .bg-slate-50 {
+      background: var(--container-bg);
+    }
+
+    .dark-mode .navbar {
+      background-color: var(--nav-bg-color);
+    }
+
+    .dark-mode .navbar-dark .navbar-nav .nav-link {
+      color: var(--nav-text-color);
+    }
+
+    .dark-mode .switch-slider:before {
+      background-color: var(--text-color);
+    }
+
+    .dark-mode .bg-slate-50 {
+      background-color: var(--container-bg);
+    }
+
+    .dark-mode .marker:text-cyan {
+      color: var(--bullet-text-color);
+    }
+
+    .dark-mode .text-cyan {
+      color: var(--link-color) !important;
+    }
+    
+    a.text-cyan {
+      color: var(--link-color) !important;
+    }
+
+    .projects-title {
+      color: #047A88;
+    }    
+
+    .sun-moon-emoji {
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    // Function to set the dark mode preference in localStorage
+    function setDarkModePreference(isDarkMode) {
+      localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+    }
+
+    // JavaScript function to toggle light and dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      const isDarkMode = body.classList.contains("dark-mode");
+
+      // Toggle the dark mode class on the body element
+      if (isDarkMode) {
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+      } else {
+        body.classList.remove("light-mode");
+        body.classList.add("dark-mode");
+      }
+
+      // Save the dark mode preference to localStorage
+      setDarkModePreference(!isDarkMode);
+
+      // Toggle the sun/moon emoji
+      const sunMoonEmoji = document.getElementById("sunMoonEmoji");
+      sunMoonEmoji.innerText = isDarkMode ? "☀️" : "🌙";
+    }
+
+    // Function to check the user's dark mode preference on page load
+    function checkDarkModePreference() {
+      const isDarkMode = localStorage.getItem('darkMode') === 'true';
+      const body = document.body;
+      if (isDarkMode) {
+        body.classList.add("dark-mode");
+        document.getElementById("sunMoonEmoji").innerText = "🌙";
+      } else {
+        body.classList.add("light-mode");
+        document.getElementById("sunMoonEmoji").innerText = "☀️";
+      }
+    }
+  </script>
+ </head>
+ <body class="light-mode" onload="checkDarkModePreference()">
+  <nav class="navbar navbar-expand-lg navbar-light">
+   <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+     <span class="projects-title text-cyan">Nishant Mishra</span>
+    </a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+     <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="navbar-nav">
+      <li class="nav-item">
+       <a class="nav-link active text-cyan" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link active text-cyan" href="courses.html">Courses</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link text-cyan" href="personal.html">Personal</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link text-cyan" href="research.html">Research</a>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link sun-moon-emoji" id="sunMoonEmoji" onclick="toggleDarkMode()">☀️</span>
+      </li>
+     </ul>
+    </div>
+
+   </div>
+  </nav>
+  <br>
+  <div class="bg-slate-50 rounded-xl justify-center p-7 mt-12 mb-12 mx-12 md:mx-auto lg:mx-auto wide-container shadow-2xl">
+    <h1 align="center" class="mb-2 text-3xl font-extrabold leading-none tracking-tight text-cyan md:text-4xl lg:text-5xl projects-title">Course Projects</h1>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div align="center" class="col" id='personal'>
+          <br><br>
+          <p class="font-medium text-xl lg:text-2xl mb-2">Reading Between Private Lines 🔒</p>
+          <p>The growing field of <b>differential privacy</b> (DP) offers a framework where potentially-sensitive data can be analyzed in aggregate
+            while limiting the information that can be known about individual data entries. For my CS 208 final project, I worked with Eric Shen
+            (<i>Harvard College '24</i>) to dive into ridge, polynomial, lasso and Bayesian regression to  provide a review on how each of these techniques
+            has been modified to satisfy DP in academic literature. We also attempt code implementations (<b>Python</b>) of these techniques and evaluated
+            their performance on simple datasets to discuss considerations, challenges, and recommendations for them.<br>
+          <br>
+          <a class="btn btn-outline-info" href="assets/208 Poster.pdf"><b>Project Poster</b></a> <a class="btn btn-outline-info" href="assets/CS_208_report.pdf"><b>Project Report</b></a></p>
+        </div>
+        <div class="col text-right"><br><img alt="Responsive image" class="img-fluid border border-dark" height="475" src="assets/208_picture.png" width="475"></div>
+      </div>
+    </div>
+
+    <br><br><br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col"><br><br><img alt="Responsive image" class="img-fluid border border-dark" height="550" src="assets/Math22.png" width="570"></div>
+        <div align="center" class="col right text-align left" id='personal'>
+          <p class="font-medium text-xl lg:text-2xl mb-2">Bridges & Donuts 🌉🍩</p>
+          <p>In my freshman year at Harvard, I worked on two projects for Math 22,
+          a year-long proof-based course on the connections between <b>linear algebra</b> and <b>vector calculus</b>. For each project, my partner,
+          Erin Yuan (<i>Harvard College '24</i>), and I worked to write up a paper, one on <b>graph theory</b> with linear algebra (Fall '20), and the
+          other on <b>point-set topology</b> with vector calculus (Spring '21). We start both papers by proving abstract theorems, but end with applications
+          of each topic, whether it was computing the sheer number of paths a traveler could take to reach their destination (graph theory), or classifying
+          the letters of the alphabet (topology).
+          <br><br>
+          <a class="btn btn-outline-info" href="assets/An_Introduction_to_the_Applications_of_Linear_Algebra_in_Graph_Theory.pdf"><b>Graph Theory Paper</b></a> <a class="btn btn-outline-info" href="assets/An_Introduction_to_Point_Set__Topology.pdf"><b>Point-Set Topology Paper</b></a></p>
+        </div>
+      </div>
+    </div>
+
+    <br><br><br>
+
+    <div class="container">
+      <div class="row">
+        <div align="center" class="col" id='personal'>
+          <br>
+          <p class="font-medium text-xl lg:text-2xl mb-2">Catch 21: Dice 🎲</p>
+          <p>This started out as my final project for CS50, Harvard's most popular course, with more than 700 students! My partner, Omar Wahby
+            (<i>Harvard College '24</i>), and I implemented a web application to host a two-player dice game programmed with <b>JavaScript</b>.
+            The game also features a username and password account system, a personalized game statistics page, and a global leaderboard for users
+            to see how they stack up against each other, all implemented with <b>SQL</b> and <b>Python</b>. For the front-end, we used <b>HTML5/CSS</b>,
+            as well as <b>Bootstrap 4</b>. We ended up deploying the website on Heroku, so anyone can make an account, play with friends, and appear
+            on the leaderboard!<br>
+          <br>
+          <a class="btn btn-outline-info" href="https://catch-21-dice.herokuapp.com/login"><b>Deployed Site</b></a> <a class="btn btn-outline-info" href="https://github.com/nmishra459/catch_21_dice"><b>GitHub Repository</b></a> <a class="btn btn-outline-info" href="https://www.youtube.com/watch?v=euf5um5zlSY"><b>Video Demo</b></a></p>
+        </div>
+        <div class="col"><br><img alt="Responsive image" class="img-fluid border border-dark" height="500" src="assets/Catch21-Dice.png" width="500"></div>
+      </div>
+    </div>
+
+    <br><br><br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col"><br>
+          <video autoplay loop muted class="embed-responsive embed-responsive-1by1" height="400" width="400"><source src="assets/asteroids.mp4" type="video/mp4"> Your browser does not support the video tag.</video>
+        </div>
+        <div align="center" class="col right text-align left" id='personal'>
+          <br><br><br>
+          <p class="font-medium text-xl lg:text-2xl mb-2">Asteroid Ambush! 🚀</p>
+          <p>For my final project for AP Computer Science A, I programmed a 2D space fighter game that has users destroy asteroids and collect coins. The game
+            features a timer, scoreboard, and life counter. To spice up gameplay, I added four different upgrade paths for the users to take, which can either
+            grant lives, randomly destroy asteroids, or improve the ray-gun mechanism's rate and scope. The sprites were taken from open source locations on the
+            internet, and the logic was implemented entirely in <b>Java.</b><br>
+          <br>
+          <a class="btn btn-outline-info" href="https://github.com/nmishra459/Asteroid_Ambush"><b>GitHub Repository</b></a></p>
+        </div>
+      </div>
+	</div>
+  <br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
